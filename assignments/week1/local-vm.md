@@ -118,8 +118,6 @@ VBoxManage createvm --name "Ubuntu 22.04" --ostype "Ubuntu_64" --register
 
 ---
 
-## 7. System-Specific Notes
-
 
 ## Contributing
 
