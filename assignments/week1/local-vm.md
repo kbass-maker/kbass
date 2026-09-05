@@ -25,7 +25,7 @@ A step-by-step guide for setting up an Ubuntu 22.04 LTS virtual machine using Or
 | **Virtual Machine Software** | Oracle VirtualBox 7.1.4 r165100 |
 | **Guest OS** | Ubuntu 22.04.5 LTS |
 | **Hostname** | `kbass-vbox` |
-| **Course Repository Path** | `E:/workspace/comp488` (External USB) |
+| **Course Repository Path** | `E:/workspace/comp488` |
 
 ---
 
