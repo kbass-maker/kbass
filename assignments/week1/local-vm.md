@@ -134,7 +134,7 @@ If you locate an error in the official lecture notes, please follow standard ope
 
 Not tested
 
-## 9️⃣ VirtualBox CLI – Full Script (Git Bash)
+VirtualBox CLI – Full Script (Git Bash)
 
 ```bash
 # Create the VM and register it
@@ -163,5 +163,8 @@ VBoxManage storageattach "Ubuntu_22.04" --storagectl "IDE Controller" \
 VBoxManage modifyvm "Ubuntu_22.04" --natpf1 "ssh,tcp,,2222,,22"
 ```
 
-# 7️⃣ Start the VM in headless mode (or remove `--type headless` to see the GUI)
+Start the VM in headless mode (or remove `--type headless` to see the GUI)
+
+```
 VBoxManage startvm "Ubuntu_22.04" --type headless
+```
