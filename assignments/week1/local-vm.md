@@ -113,8 +113,9 @@ VBoxManage list vms
 VBoxManage createvm --name "Ubuntu 22.04" --ostype "Ubuntu_64" --register
 ```
 
-> [!INFO]
-> While CLI management is available, the VirtualBox Graphical User Interface (GUI) was used for the primary setup of this VM.
+!!! info
+
+   While CLI management is available, the VirtualBox Graphical User Interface (GUI) was used for the primary setup of this VM.
 
 ---
 
