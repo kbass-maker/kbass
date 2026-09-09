@@ -14,6 +14,7 @@ A step-by-step guide for setting up an Ubuntu 22.04 LTS virtual machine using Or
 - [6. VirtualBox CLI Alternative](#6-virtualbox-cli-alternative)
 - [7. System-Specific Notes](#7-system-specific-notes)
 - [Contributing](#contributing)
+- Appendix -- Usefull commands added by Gregor
 
 ---
 
@@ -128,3 +129,39 @@ If you locate an error in the official lecture notes, please follow standard ope
 3. **Make and commit** your changes (`git commit -m "Fix typo in VM setup notes"`).
 4. **Push** the branch to GitHub (`git push origin fix/lecture-note-error`).
 5. Open a **Pull Request** providing a clear description of the correction.
+
+## Appendix -- Useful commands added by Gregor
+
+Not tested
+
+## 9️⃣ VirtualBox CLI – Full Script (Git Bash)
+
+```bash
+# Create the VM and register it
+VBoxManage createvm --name "Ubuntu_22.04" --ostype "Ubuntu_64" --register
+
+# Set RAM & video memory
+VBoxManage modifyvm "Ubuntu_22.04" --memory 4096 --vram 128
+
+# Create a 25 GB dynamically allocated VDI
+VBoxManage createhd --filename "$HOME/VirtualBox VMs/Ubuntu_22.04/Ubuntu_22.04.vdi" \
+                    --size 25600 --variant Standard
+
+# Attach the disk to SATA controller
+VBoxManage storagectl "Ubuntu_22.04" --name "SATA Controller" --add sata --controller IntelAhci
+VBoxManage storageattach "Ubuntu_22.04" --storagectl "SATA Controller" \
+                    --port 0 --device 0 --type hdd \
+                    --medium "$HOME/VirtualBox VMs/Ubuntu_22.04/Ubuntu_22.04.vdi"
+
+# Attach the Ubuntu ISO as a DVD drive
+ISO_PATH="E:/Downloads/ubuntu-22.04.5-live-server-amd64.iso"
+VBoxManage storagectl "Ubuntu_22.04" --name "IDE Controller" --add ide
+VBoxManage storageattach "Ubuntu_22.04" --storagectl "IDE Controller" \
+                    --port 0 --device 0 --type dvddrive --medium "$ISO_PATH"
+
+# (Optional) Enable NAT networking with port‑forwarding for SSH
+VBoxManage modifyvm "Ubuntu_22.04" --natpf1 "ssh,tcp,,2222,,22"
+```
+
+# 7️⃣ Start the VM in headless mode (or remove `--type headless` to see the GUI)
+VBoxManage startvm "Ubuntu_22.04" --type headless
