@@ -114,6 +114,8 @@ This installation provides additional integration features between the Ubuntu gu
 > [!NOTE]
 > Below is the screenshot verifying a successful login to the Ubuntu VM and execution of terminal commands.
 
+![Ubuntu VM Login Screenshot](./vm-login.png)
+
 ---
 
 ## 7. VirtualBox CLI Alternative
