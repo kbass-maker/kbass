@@ -12,7 +12,7 @@ Note:
   * [x] Start a VM on Jetstream and follow the tutorial provided.
   * [x] Improve the tutorial while creating pull requests in the lecture notes if you see issues.
   * [x] Document your activity with a screenshot of the terminal (800x600).
-  * [x] [VM.MD](https://github.com/cloudmesh-ai-luc/kbass/blob/main/assignments/week3/vm.md)
+  * [x] [VM.MD](https://github.com/cloudmesh-ai-luc/kbass/blob/main/assignments/week3/jetstream-vm.md)
 
 
 * [ ] Assignment W3.2: VM on Chameleon Cloud (Due Sep 17, 2026, 9am)
