@@ -62,7 +62,7 @@ Note:
   * [x] Choose one backup method and outline the setup steps.
   * [x] Create a weekly backup schedule (day, time, what to back up).
   * [x] Research an example from cloud computing where a missing backup strategy led to issues and write a short incident case.
-  * [x] Submit to `/assignments/week2/backup.md`. [LINK](https://github.com/cloudmesh-ai-luc/kbass4/blob/main/assignments/week2/backup.md)
+  * [x] Submit to `/assignments/week2/backup.md`. [LINK](https://github.com/cloudmesh-ai-luc/kbass/blob/main/assignments/week2/backup.md)
 
 
 * [x] Assignment W2.4: Local VM (Due Sep 10, 2026, 9am)
