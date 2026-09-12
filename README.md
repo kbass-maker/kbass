@@ -8,11 +8,11 @@ Note:
 
 ## Week 3
 
-* [ ] Assignment W3.1: VM on Jetstream (Due Sep 17, 2026, 9am)
-  * [ ] Start a VM on Jetstream and follow the tutorial provided.
-  * [ ] Improve the tutorial while creating pull requests in the lecture notes if you see issues.
-  * [ ] Document your activity with a screenshot of the terminal (800x600).
-  * [ ] [VM.MD](https://github.com/cloudmesh-ai-luc/YOURREPO/blob/main/assignments/week3/vm.md)
+* [x] Assignment W3.1: VM on Jetstream (Due Sep 17, 2026, 9am)
+  * [x] Start a VM on Jetstream and follow the tutorial provided.
+  * [x] Improve the tutorial while creating pull requests in the lecture notes if you see issues.
+  * [x] Document your activity with a screenshot of the terminal (800x600).
+  * [x] [VM.MD](https://github.com/cloudmesh-ai-luc/kbass/blob/main/assignments/week3/vm.md)
 
 
 * [ ] Assignment W3.2: VM on Chameleon Cloud (Due Sep 17, 2026, 9am)
@@ -22,7 +22,7 @@ Note:
   * [ ] Make a reservation not exceeding 1 hour.
   * [ ] Start up a VM using a Chameleon Cloud image for Ubuntu 24.04 using the smallest image size possible.
   * [ ] Document your activity with a screenshot of the terminal (800x600).
-  * [ ] [VM.MD](https://github.com/cloudmesh-ai-luc/YOURREPO/blob/main/assignments/week3/vm.md)
+  * [ ] [VM.MD](https://github.com/cloudmesh-ai-luc/kbass/blob/main/assignments/week3/vm.md)
 
 
 * [ ] Assignment W3.3: OPTIONAL: VM on public cloud (Due Sep 17, 2026, 9am)
