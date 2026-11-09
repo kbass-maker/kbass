@@ -36,7 +36,7 @@ groups:
           (
             rate(container_cpu_usage_seconds_total{
               cpu="total",
-              id=~"/docker/.*"
+              id=~"/docker/[a-f0-9]{64}"
             }[2m]) * 100
           ) > 80
         for: 1m
@@ -50,7 +50,7 @@ groups:
         expr: |
           (
             container_memory_working_set_bytes{
-              id=~"/docker/.*"
+              id=~"/docker/[a-f0-9]{64}"
             } / 1024 / 1024
           ) > 512
         for: 1m
