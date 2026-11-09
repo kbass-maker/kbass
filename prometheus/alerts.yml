@@ -43,7 +43,7 @@ groups:
         labels:
           severity: warning
         annotations:
-          summary: "High CPU usage detected"
+          summary: "High CPU usage detected for {{ $labels.id }}"
           description: "Container CPU usage has exceeded 80% of one CPU core for at least one minute."
 
       - alert: HighMemoryUsage
@@ -57,5 +57,5 @@ groups:
         labels:
           severity: warning
         annotations:
-          summary: "High memory usage detected"
+          summary: "High memory usage detected for {{ $labels.id }}"
           description: "Container memory working set has exceeded 512 MiB for at least one minute."
