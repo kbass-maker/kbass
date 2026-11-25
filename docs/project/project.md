@@ -502,6 +502,13 @@ Structured response validation ensures that AI-generated information conforms to
 
 AI-generated recommendations are informational and do not directly execute infrastructure operations. The current implementation retains administrator oversight and does not provide autonomous incident remediation.
 
+**Figure 3.2.** Hybrid AI-assisted troubleshooting workflow
+illustrating deterministic incident diagnosis, configurable
+language-model inference, response validation, caching,
+inference budgeting, and rule-based fallback.
+
+![Hybrid AI-assisted troubleshooting workflow](images/hybrid-troubleshooting-workflow.png)
+
 ## 3.6 Data Storage and Supporting Infrastructure
 
 The platform uses SQLite and Redis for different operational requirements.
@@ -1072,6 +1079,8 @@ The evaluation is organized around the following objectives:
 
 The evaluation combines automated functional tests, controlled experiments, performance measurements, and deployment verification. Each experiment is assessed according to its defined procedure and recorded results. Quantitative evaluation of live AI diagnostic accuracy and recommendation quality is distinguished from the functional verification of the implemented AI integration and reliability mechanisms.
 
+![Research methodology and experimental evaluation framework](images/research-methodology-evaluation.png)
+
 ## 5.2 Experimental Environment
 
 The evaluation was conducted across two environments: a local containerized development environment and a remote Jetstream2 cloud deployment.
@@ -1202,6 +1211,18 @@ The aggregate sustained workload results are summarized in Table 5.3.
 | P99 latency | 26.666 ms |
 | Maximum latency | 46.897 ms |
 
+**Figure 5.1.** HTTP throughput across the 29 experimental batches.
+
+![HTTP throughput across experimental batches](images/benchmark-throughput.png)
+
+**Figure 5.2.** Average HTTP response latency across the 29 experimental batches.
+
+![Average HTTP response latency across experimental batches](images/benchmark-batch-latency.png)
+
+**Figure 5.3.** Distribution of response latencies across the 29,000 successful requests.
+
+![Distribution of HTTP response latencies](images/benchmark-latency-distribution.png)
+
 All 29,000 requests returned HTTP 200, resulting in a
 100% observed request success rate during the experiment.
 
@@ -1218,10 +1239,13 @@ The aggregate mean response latency was 9.752 ms, while
 the 95th-percentile and 99th-percentile latencies were
 17.605 ms and 26.666 ms, respectively.
 
-The difference between mean and percentile latency indicates
-that most requests completed within a relatively narrow
-response-time range, although a smaller proportion experienced
-higher latency.
+The latency distribution provides additional insight into
+request-processing behavior. The median response latency was
+7.880 ms, compared with a P95 of 17.605 ms and a P99 of
+26.666 ms. As illustrated in Figure 5.3, these measurements
+characterize the distribution of response times and indicate
+that a smaller proportion of requests experienced higher
+latencies than the median.
 
 Compared with the sequential baseline, concurrent execution
 produced substantially higher observed throughput. The
@@ -1229,9 +1253,52 @@ produced substantially higher observed throughput. The
 1,330.52 requests per second, while the sequential benchmark
 achieved approximately 297.26 requests per second.
 
-The sustained experiment provides additional evidence of
-consistent request handling across repeated batches rather
-than relying exclusively on a single short benchmark.
+Figures 5.1 and 5.2 provide a batch-level view of throughput
+and average response latency, respectively. Unlike the
+aggregate measurements, these figures reveal how performance
+varied throughout the sustained experiment. Figure 5.3
+complements this analysis by illustrating the distribution
+of individual request latencies.
+
+A comparison of the batch-level measurements also revealed
+a difference between the earlier and later portions of the
+experiment, as illustrated in Figure 5.4. For descriptive
+analysis, the 29 batches were divided into two consecutive
+phases: batches 1–16 and batches 17–29.
+
+The phase-level averages are presented in Table 5.4.
+
+**Table 5.4. Descriptive Performance Comparison Across Experimental Phases**
+
+| Metric | Batches 1–16 | Batches 17–29 |
+|---|---:|---:|
+| Number of batches | 16 | 13 |
+| Mean batch throughput (requests/s) | 1,336.97 | 802.10 |
+| Mean batch response latency (ms) | 7.447 | 12.588 |
+
+**Figure 5.4.** Comparison of mean throughput and response latency
+across the two experimental phases.
+
+![Comparison of performance across experimental phases](images/benchmark-phase-comparison.png)
+
+The later phase exhibited lower mean throughput and higher mean
+response latency than the earlier phase. Specifically, mean batch
+throughput decreased from 1,336.97 to 802.10 requests per second,
+while mean batch response latency increased from 7.447 to 12.588
+milliseconds.
+
+This pattern indicates that the observed request-processing
+performance was not uniform across all 29 batches. However, the
+comparison is descriptive rather than a controlled investigation
+of the cause of the change. Since CPU utilization, memory
+consumption, and other system-level measurements were not recorded,
+the available evidence does not establish whether the difference
+resulted from resource contention, application behavior, host
+activity, or another factor.
+
+The phase comparison therefore provides an additional observation
+about performance variation during the sustained workload rather
+than evidence of a specific underlying bottleneck.
 
 Overall, the measurements demonstrate successful HTTP request
 processing under the evaluated local deployment conditions.

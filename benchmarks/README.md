@@ -42,9 +42,19 @@ Three initial configurations were evaluated:
 A longer experiment repeatedly executed batches of 1,000 requests
 with 10 workers for approximately 30 seconds.
 
-Each batch used a separate thread pool. The sustained experiment
-included process startup and inter-batch overhead in its overall
-duration and throughput measurement.
+Each batch used a separate thread pool. Each JSON record contains
+the batch start timestamp, execution duration, throughput, and
+individual request measurements.
+
+The aggregate experiment interval was reconstructed from the first
+batch start timestamp through completion of the final batch. This
+interval includes the gaps between consecutive batches but does not
+include time preceding the first recorded batch timestamp.
+
+The sum of individual batch execution durations was 28.419 seconds,
+while the reconstructed experiment interval was 30.886 seconds.
+Accordingly, aggregate throughput is calculated using the complete
+reconstructed interval rather than the sum of batch execution times.
 
 ## 4. Experimental Results
 
@@ -66,13 +76,13 @@ duration and throughput measurement.
 
 | Metric | Result |
 |---|---:|
-| Duration | 31.00 seconds |
+| Reconstructed experiment interval | 30.886 seconds |
 | Benchmark batches | 29 |
 | Concurrent workers | 10 |
 | Total requests | 29,000 |
 | Successful requests | 29,000 |
 | Failed requests | 0 |
-| Overall throughput | 935.61 req/s |
+| Overall throughput | 938.92 req/s |
 | Minimum latency | 2.96 ms |
 | Average latency | 9.75 ms |
 | Median latency | 7.88 ms |
@@ -87,8 +97,8 @@ All requests returned HTTP 200 across the recorded experiments.
 Concurrent workloads achieved higher observed throughput than the
 sequential baseline, while also increasing request latency.
 
-The 31-second experiment achieved approximately 935.61 requests per
-second with no recorded failures.
+The experiment achieved 938.92 requests per second over the
+reconstructed 30.886-second interval, with no recorded failures.
 
 The difference between short and longer experiments indicates that
 single, short benchmark runs should not be treated as reliable
